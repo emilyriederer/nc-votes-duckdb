@@ -33,3 +33,82 @@ Core scripts are in the `etl` subdirectory:
 - `extract-*.py` scripts: Download (and unzip) different data sources from NCSBE and US Census Bureau and write results to `data/raw/`
 - `transform-*.py` scripts: Wrangle downloaded data sources from `csv` to `parquet` with light transformation with `pyarrow`. Results are written to `data/`
 - `load-db.py`: Loads nothings! It creates a `nc.duckdb` file which references the external parquet files in views
+
+## Running on Codespaces
+
+1. Launch on Codespaces
+2. Set-up environment:
+
+```
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
+source venv/bin/activate
+```
+
+3. Pull all raw data:
+
+```
+chmod +x etl/extract-all.sh
+etl/extract-all.sh
+```
+
+4. Transform all raw data:
+
+```
+chmod +x etl/transform-all.sh
+etl/transform-all.sh
+```
+
+5. Create duckdb database:
+
+```
+python etl/load-db.py
+```
+
+6. (Optional) Install duckdb CLI
+
+```
+wget https://github.com/duckdb/duckdb/releases/download/v0.5.0/duckdb_cli-linux-amd64.zip
+unzip duckdb_cli-linux-amd64.zip
+rm duckdb_cli-linux-amd64.zip
+```
+
+7. Run sample queries
+
+In python: See sample queries in `test-query.py` file
+
+On CLI: 
+
+```
+.\duckdb nc.duckdb
+.timer on
+select early_vote.ncid, count(1) 
+from 
+  early_vote 
+  left join 
+  hist_gen 
+  on early_vote.ncid = hist_gen.ncid 
+  left join
+  register
+  on early_vote.ncid = register.ncid
+group by 1;
+```
+
+or something even more complicated:
+
+```
+select early_vote.ncid, register.registr_dt, count(1) 
+from 
+  early_vote 
+  left join 
+  hist_gen 
+  on early_vote.ncid = hist_gen.ncid 
+  left join
+  register
+  on early_vote.ncid = register.ncid
+group by 1,2;
+```
+
+ 8. Exit `duckdb` and run `free` in the terminal to marvel at what 8GB of RAM can do!
