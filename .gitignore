@@ -1,3 +1,14 @@
-data
-duckdb
-nc.duckdb*
+# exclude large data files
+# keep county-level results since small and not automated
+!data/
+data/*
+!data/.gitkeep
+!data/results_county.parquet
+!data/raw/
+data/raw/*
+!data/raw/.gitkeep
+
+# ephemeral artifacts arising from project interaction
+nc.duckdb.wal
+etl/helpers/__pycache__
+venv
