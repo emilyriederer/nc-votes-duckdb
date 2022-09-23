@@ -9,6 +9,7 @@ data/raw/*
 !data/raw/.gitkeep
 
 # ephemeral artifacts arising from project interaction
+nc.duckdb
 nc.duckdb.wal
 etl/helpers/__pycache__
 venv
