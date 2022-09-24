@@ -10,7 +10,8 @@ data/raw/*
 
 # ephemeral artifacts arising from project interaction
 duckdb
-nc*.duckdb
-nc*.duckdb.wal
+nc.duckdb
+nc.duckdb.wal
+out.log
 etl/helpers/__pycache__
 venv
