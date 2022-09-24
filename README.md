@@ -37,6 +37,7 @@ Core scripts are in the `etl` subdirectory:
 ## Running on Codespaces
 
 1. Launch on Codespaces
+
 2. Set-up environment:
 
 ```
@@ -70,16 +71,27 @@ python etl/load-db.py
 6. (Optional) Install duckdb CLI
 
 ```
-wget https://github.com/duckdb/duckdb/releases/download/v0.5.0/duckdb_cli-linux-amd64.zip
-unzip duckdb_cli-linux-amd64.zip
-rm duckdb_cli-linux-amd64.zip
+chmod +x get-duckdb-cli.sh
+./get-duckdb-cli.sh
 ```
 
-7. Run sample queries
+7a. Run sample queries in CLI
 
-In python: See sample queries in `test-query.py` file
+First download the CLI:
 
-On CLI: 
+```
+chmod +x get-duckdb-cli.sh
+./get-duckdb-cli.sh
+```
+
+Launch the CLI:
+
+```
+.\duckdb nc.duckdb
+.timer on
+```
+
+Try out some sample queries:
 
 ```
 .\duckdb nc.duckdb
@@ -110,5 +122,9 @@ from
   on early_vote.ncid = register.ncid
 group by 1,2;
 ```
+
+7b. Run sample queries in python
+
+In python: See sample queries in `test-query.py` file
 
  8. Exit `duckdb` and run `free` in the terminal to marvel at what 8GB of RAM can do!
