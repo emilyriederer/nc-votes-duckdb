@@ -20,7 +20,7 @@ data_dict = {
   'register': 'data/register/*/*.parquet',
   'cps_suppl': 'data/cps_suppl.parquet'
 }
-partitioned = ['hist_gen', 'hist_pri', 'register']
+partitioned = ['hist_gen', 'hist_oth', 'register']
 
 for k,v in data_dict.items():
 
