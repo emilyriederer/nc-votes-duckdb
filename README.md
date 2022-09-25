@@ -43,9 +43,7 @@ Core scripts are in the `etl` subdirectory:
 ```
 python3 -m venv venv
 source venv/bin/activate
-python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
-source venv/bin/activate
 ```
 
 3. Pull all raw data:
@@ -75,19 +73,14 @@ chmod +x get-duckdb-cli.sh
 ./get-duckdb-cli.sh
 ```
 
+7. Run sample queries
+
 7a. Run sample queries in CLI
-
-First (one-time) download the CLI:
-
-```
-chmod +x get-duckdb-cli.sh
-./get-duckdb-cli.sh
-```
 
 Launch the CLI:
 
 ```
-.\duckdb nc.duckdb
+./duckdb nc.duckdb
 .timer on
 ```
 
@@ -145,4 +138,6 @@ order by 1,2
 
 In python: See sample queries in `test-query.py` file
 
- 8. Exit `duckdb` and run `free` in the terminal to marvel at what 8GB of RAM can do!
+ 8. Exit `duckdb` (Ctrl + D)
+ 
+ 9. Run `free` in the terminal to marvel at what 8GB of RAM can do!
