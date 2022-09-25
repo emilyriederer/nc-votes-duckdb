@@ -84,6 +84,8 @@ Launch the CLI:
 .timer on
 ```
 
+(Note: You can exit the DuckDB CLI with `Ctrl + D`)
+
 Try out some sample queries. For example, we might wonder how many past general elections that early voters have voted in before:
 
 ```
@@ -137,7 +139,5 @@ order by 1,2
 7b. Run sample queries in python
 
 In python: See sample queries in `test-query.py` file
-
- 8. Exit `duckdb` (Ctrl + D)
  
- 9. Run `free` in the terminal to marvel at what 8GB of RAM can do!
+8. Run `free` in the terminal to marvel at what 8GB of RAM can do!
