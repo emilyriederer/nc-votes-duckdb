@@ -14,8 +14,6 @@ The ultimate data tables accessible via the `duckdb` database are:
 - Current Population Survey 2022 November voting supplement from [US Census Bureau](https://www.census.gov/data/datasets/time-series/demo/cps/cps-supp_cps-repwgt/cps-voting.html)
 - County-level past election results from [MIT Election Lab via Harvard Dataverse](https://dataverse.harvard.edu/file.xhtml?fileId=6104822&version=10.0)
 
-(Note: In the spirit of "a minimalistic infrastructure for a low resource environment", the static dataset of past county-level election results was downloaded manually. Otherwise, Harvard Dataverse required obtaining an API key for programmatic interaction.)
-
 ### Database tables
 
 The data sources mentioned above are queryable via `nc.duckdb` in the respective tables:
